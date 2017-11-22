@@ -1,6 +1,7 @@
 # psi
 This Repository is for System Information Project
 
+Nama Proyek : Laporan Penjualan Outlet Roti SIP
 KELOMPOK 5
 
 Anggota Kelompok
@@ -9,4 +10,4 @@ Muhammad Zhafran Z.		(E41151242)
 Elma Khoirotun Nafiah		(E41151148)
 Vivinia Agus Susanti			(E41151949)
 
-Nama Proyek : Laporan Penjualan Outlet Roti SIP
+
