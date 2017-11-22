@@ -1,6 +1,8 @@
 # psi
 This Repository is for System Information Project
 
+KELOMPOK 5
+
 Anggota Kelompok
 Muhammad Jafar Abdillah		(E41151944)
 Muhammad Zhafran Z.		(E41151242)
