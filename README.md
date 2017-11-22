@@ -1,2 +1,10 @@
 # psi
 This Repository is for System Information Project
+
+Anggota Kelompok
+Muhammad Jafar Abdillah		(E41151944)
+Muhammad Zhafran Z.		(E41151242)
+Elma Khoirotun Nafiah		(E41151148)
+Vivinia Agus Susanti			(E41151949)
+
+Nama Proyek : Laporan Penjualan Outlet Roti SIP
