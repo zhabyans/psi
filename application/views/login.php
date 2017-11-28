@@ -1,4 +1,7 @@
-
+<?php if(isset($_SESSION['user'])==1){
+	redirect('home/daftar_retur');
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
