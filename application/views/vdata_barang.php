@@ -23,12 +23,7 @@
 							</thead>
 							<tbody>
 								<tr>
-									<?php foreach ($product as $p){?>
-										<td><?php echo $p->ID_BARANG;?></td>
-										<td><?php echo $p->NAMA_BARANG;?></td>
-										<td><?php echo $p->STATUS_RETUR;?></td>
-										<td><?php echo $p->TANGGAL_MASUK;?></td>
-									<?php }?>
+							
 								</tr>
 							</tbody>
 						</table>
