@@ -56,15 +56,15 @@
             </div>
 
             <ul class="nav">
-                <li <?php if($_GET['aksi']=='beranda') {?> class="active" <?php }?>>
+                <li <?php if($_GET['aksi']=='Beranda') {?> class="active" <?php }?>>
                     <a href="<?php echo base_url()?>/index.php/home">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li <?php if($_GET['aksi']=='barang') {?> class="active" <?php }?>>
+                <li <?php if($_GET['aksi']=='Data Barang') {?> class="active" <?php }?>>
                     <a href="<?php echo base_url()?>/index.php/home/data_barang">
-                        <i class="pe-7s-note2"></i>
+                        <i class="pe-7s-gift"></i>
                         <p>Data Barang</p>
                     </a>
                 </li>
@@ -74,13 +74,13 @@
                         <p>Data Penjualan</p>
                     </a>
                 </li>
-                <li <?php if($_GET['aksi']=='laporan penjualan') {?> class="active" <?php }?>>
-                    <a href="<?php echo base_url()?>/index.php/home/laporan_penjualan">
-                        <i class="pe-7s-cart"></i>
+                <li <?php if($_GET['aksi']=='Laporan Penjualan') {?> class="active" <?php }?>>
+                    <a href="<?php echo base_url()?>/index.php/home/laporan">
+                        <i class="pe-7s-note2"></i>
                         <p>Laporan Penjualan</p>
                     </a>
                 </li>
-                <li <?php if($_GET['aksi']=='daftar retur') {?> class="active" <?php }?>>
+                <li <?php if($_GET['aksi']=='Daftar Retur') {?> class="active" <?php }?>>
                     <a href="<?php echo base_url()?>/index.php/home/daftar_retur">
                         <i class="pe-7s-repeat"></i>
                         <p>Daftar Retur</p>
@@ -100,63 +100,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Dashboard</a>
+                    <a class="navbar-brand" href="#"><?php echo $_GET['aksi']?></a>
                 </div>
                 <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-left">
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-dashboard"></i>
-								<p class="hidden-lg hidden-md">Dashboard</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-globe"></i>
-                                    <b class="caret hidden-lg hidden-md"></b>
-									<p class="hidden-lg hidden-md">
-										5 Notifications
-										<b class="caret"></b>
-									</p>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
-                              </ul>
-                        </li>
-                        <li>
-                           <a href="">
-                                <i class="fa fa-search"></i>
-								<p class="hidden-lg hidden-md">Search</p>
-                            </a>
-                        </li>
-                    </ul>
-
+                
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <p>
-										Dropdown
-										<b class="caret"></b>
-									</p>
-
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                              </ul>
-                        </li>
                         <li>
                             <a href="<?php echo base_url() ?>/index.php/login/logout">
-                                <p>Log out</p>
+                                <p>Log out <i class="pe-7s-power"></i></p>
                             </a>
                         </li>
 						<li class="separator hidden-lg"></li>
@@ -164,6 +115,3 @@
                 </div>
             </div>
         </nav>
-
-
-        
