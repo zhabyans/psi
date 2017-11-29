@@ -14,6 +14,23 @@ class home extends CI_Controller {
 		$this->load->view('header_view');
 		$this->load->view('footer_view');
 	}
+	
+	public function data_barang(){
+		$_GET['aksi']='barang';
+		$this->load->view('header_view');
+		$this->load->view('vdata_barang');
+		$this->load->view('footer_view');
+	}
+		public function data_penjualan(){
+		$_GET['aksi']='penjualan';
+		$this->load->view('header_view');
+		$this->load->view('footer_view');
+	}
+		public function laporan_penjualan(){
+		$_GET['aksi']='laporan penjualan';
+		$this->load->view('header_view');
+		$this->load->view('footer_view');
+	}
 	public function daftar_retur()
 	{
 		$data['product']=$this->mdata_pengeluaran->daftar_retur()->result();

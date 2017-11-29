@@ -75,7 +75,7 @@
                     </a>
                 </li>
                 <li <?php if($_GET['aksi']=='laporan penjualan') {?> class="active" <?php }?>>
-                    <a href="<?php echo base_url()?>/index.php/home/laporan">
+                    <a href="<?php echo base_url()?>/index.php/home/laporan_penjualan">
                         <i class="pe-7s-cart"></i>
                         <p>Laporan Penjualan</p>
                     </a>
