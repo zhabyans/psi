@@ -62,12 +62,7 @@ class home extends CI_Controller {
 			redirect('home/data_barang');
 		}
 	}
-	public function data_barang(){
-		$_GET['aksi']='barang';
-		$this->load->view('header_view');
-		$this->load->view('vdata_barang');
-		$this->load->view('footer_view');
-	}
+
 	public function data_penjualan(){
 		$_GET['aksi']='penjualan';
 		$this->load->view('header_view');
