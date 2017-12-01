@@ -60,9 +60,11 @@ create table USER
 (
    ID_USER              int not null auto_increment,
    USER                 varchar(20),
-   PASSWORD             varchar(20),
+   PASSWORD             varchar(50),
    primary key (ID_USER)
 );
+
+INSERT INTO `user` (`ID_USER`, `USER`, `PASSWORD`) VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3');
 
 alter table DATA_PENGELUARAN add constraint FK_MENCATAT foreign key (ID_USER)
       references USER (ID_USER) on delete restrict on update restrict;
