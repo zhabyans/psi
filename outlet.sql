@@ -1,83 +1,186 @@
-/*==============================================================*/
-/* DBMS name:      MySQL 5.0                                    */
-/* Created on:     11/29/2017 6:00:31 AM                        */
-/*==============================================================*/
+-- phpMyAdmin SQL Dump
+-- version 4.7.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: 04 Des 2017 pada 08.35
+-- Versi Server: 10.1.26-MariaDB
+-- PHP Version: 7.1.8
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
 
 
-drop table if exists BARANG;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
-drop table if exists DATA_PENGELUARAN;
+--
+-- Database: `outlet`
+--
 
-drop table if exists PENDATAAN_BARANG;
+-- --------------------------------------------------------
 
-drop table if exists USER;
+--
+-- Struktur dari tabel `barang`
+--
 
-/*==============================================================*/
-/* Table: BARANG                                                */
-/*==============================================================*/
-create table BARANG
-(
-   ID_BARANG            int not null auto_increment,
-   NAMA_BARANG          varchar(30),
-   HARGA                int,
-   EXPIRED              int,
-   primary key (ID_BARANG)
-);
+CREATE TABLE `barang` (
+  `ID_BARANG` int(11) NOT NULL,
+  `NAMA_BARANG` varchar(30) DEFAULT NULL,
+  `HARGA` int(11) DEFAULT NULL,
+  `EXPIRED` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-/*==============================================================*/
-/* Table: DATA_PENGELUARAN                                      */
-/*==============================================================*/
-create table DATA_PENGELUARAN
-(
-   ID_TRANSAKSI         varchar(20) not null,
-   ID_PENDATAAN         varchar(20),
-   ID_BARANG            int,
-   ID_USER              int not null,
-   TANGGAL_TERJUAL      date,
-   JUMLAH_TERJUAL       int,
-   TOTAL_TERJUAL        int,
-   primary key (ID_TRANSAKSI)
-);
+--
+-- Dumping data untuk tabel `barang`
+--
 
-/*==============================================================*/
-/* Table: PENDATAAN_BARANG                                      */
-/*==============================================================*/
-create table PENDATAAN_BARANG
-(
-   ID_PENDATAAN         varchar(20) not null,
-   ID_BARANG            int not null,
-   ID_USER              int not null,
-   TANGGAL_MASUK        date,
-   STOK                 int,
-   STATUS_RETUR         varchar(10),
-   primary key (ID_PENDATAAN)
-);
+INSERT INTO `barang` (`ID_BARANG`, `NAMA_BARANG`, `HARGA`, `EXPIRED`) VALUES
+(1, 'Roti Basah', 7000, 4),
+(2, 'roti manis', 3000, 3);
 
-/*==============================================================*/
-/* Table: USER                                                  */
-/*==============================================================*/
-create table USER
-(
-   ID_USER              int not null auto_increment,
-   USER                 varchar(20),
-   PASSWORD             varchar(50),
-   primary key (ID_USER)
-);
+-- --------------------------------------------------------
 
-INSERT INTO `user` (`ID_USER`, `USER`, `PASSWORD`) VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3');
+--
+-- Struktur dari tabel `data_pengeluaran`
+--
 
-alter table DATA_PENGELUARAN add constraint FK_MENCATAT foreign key (ID_USER)
-      references USER (ID_USER) on delete restrict on update restrict;
+CREATE TABLE `data_pengeluaran` (
+  `ID_TRANSAKSI` varchar(20) NOT NULL,
+  `ID_PENDATAAN` varchar(20) DEFAULT NULL,
+  `ID_BARANG` int(11) DEFAULT NULL,
+  `ID_USER` int(11) NOT NULL,
+  `TANGGAL_TERJUAL` date DEFAULT NULL,
+  `JUMLAH_TERJUAL` int(11) DEFAULT NULL,
+  `TOTAL_TERJUAL` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-alter table DATA_PENGELUARAN add constraint FK_MENGAKSES_NAMA foreign key (ID_BARANG)
-      references BARANG (ID_BARANG) on delete restrict on update restrict;
+--
+-- Dumping data untuk tabel `data_pengeluaran`
+--
 
-alter table DATA_PENGELUARAN add constraint FK_MENGAMBIL_STOK foreign key (ID_PENDATAAN)
-      references PENDATAAN_BARANG (ID_PENDATAAN) on delete restrict on update restrict;
+INSERT INTO `data_pengeluaran` (`ID_TRANSAKSI`, `ID_PENDATAAN`, `ID_BARANG`, `ID_USER`, `TANGGAL_TERJUAL`, `JUMLAH_TERJUAL`, `TOTAL_TERJUAL`) VALUES
+('kjfdsgh', 'PROD001', 1, 1, '2017-11-16', 5, 4);
 
-alter table PENDATAAN_BARANG add constraint FK_MENGINPUTKAN foreign key (ID_USER)
-      references USER (ID_USER) on delete restrict on update restrict;
+-- --------------------------------------------------------
 
-alter table PENDATAAN_BARANG add constraint FK_MENYIMPAN_NAMA foreign key (ID_BARANG)
-      references BARANG (ID_BARANG) on delete restrict on update restrict;
+--
+-- Struktur dari tabel `pendataan_barang`
+--
 
+CREATE TABLE `pendataan_barang` (
+  `ID_PENDATAAN` varchar(20) NOT NULL,
+  `ID_BARANG` int(11) NOT NULL,
+  `ID_USER` int(11) NOT NULL,
+  `TANGGAL_MASUK` date DEFAULT NULL,
+  `TANGGAL_RETUR` date DEFAULT NULL,
+  `STOK` int(11) DEFAULT NULL,
+  `STATUS_RETUR` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `pendataan_barang`
+--
+
+INSERT INTO `pendataan_barang` (`ID_PENDATAAN`, `ID_BARANG`, `ID_USER`, `TANGGAL_MASUK`, `TANGGAL_RETUR`, `STOK`, `STATUS_RETUR`) VALUES
+('PROD001', 2, 1, '2017-11-24', '0000-00-00', 4, 'retur'),
+('PROD002', 1, 1, '2017-11-24', '0000-00-00', 5, 'retur'),
+('PROD003', 1, 1, '2017-11-24', '0000-00-00', 4, 'retur'),
+('PROD004', 2, 1, '2017-11-25', '0000-00-00', 8, 'retur'),
+('PROD006', 1, 1, '2017-12-01', '2017-12-05', 5, NULL),
+('PROD007', 2, 1, '2017-12-01', '2017-12-04', 7, 'retur'),
+('PROD008', 2, 1, '2017-12-01', '2017-12-04', 7, 'retur');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `user`
+--
+
+CREATE TABLE `user` (
+  `ID_USER` int(11) NOT NULL,
+  `USER` varchar(20) DEFAULT NULL,
+  `PASSWORD` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `user`
+--
+
+INSERT INTO `user` (`ID_USER`, `USER`, `PASSWORD`) VALUES
+(1, 'admin', 'admin');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `barang`
+--
+ALTER TABLE `barang`
+  ADD PRIMARY KEY (`ID_BARANG`);
+
+--
+-- Indexes for table `data_pengeluaran`
+--
+ALTER TABLE `data_pengeluaran`
+  ADD PRIMARY KEY (`ID_TRANSAKSI`),
+  ADD KEY `FK_MENCATAT` (`ID_USER`),
+  ADD KEY `FK_MENGAKSES_NAMA` (`ID_BARANG`),
+  ADD KEY `FK_MENGAMBIL_STOK` (`ID_PENDATAAN`);
+
+--
+-- Indexes for table `pendataan_barang`
+--
+ALTER TABLE `pendataan_barang`
+  ADD PRIMARY KEY (`ID_PENDATAAN`),
+  ADD KEY `FK_MENGINPUTKAN` (`ID_USER`),
+  ADD KEY `FK_MENYIMPAN_NAMA` (`ID_BARANG`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`ID_USER`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `barang`
+--
+ALTER TABLE `barang`
+  MODIFY `ID_BARANG` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `ID_USER` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `data_pengeluaran`
+--
+ALTER TABLE `data_pengeluaran`
+  ADD CONSTRAINT `FK_MENCATAT` FOREIGN KEY (`ID_USER`) REFERENCES `user` (`ID_USER`),
+  ADD CONSTRAINT `FK_MENGAKSES_NAMA` FOREIGN KEY (`ID_BARANG`) REFERENCES `barang` (`ID_BARANG`),
+  ADD CONSTRAINT `FK_MENGAMBIL_STOK` FOREIGN KEY (`ID_PENDATAAN`) REFERENCES `pendataan_barang` (`ID_PENDATAAN`);
+
+--
+-- Ketidakleluasaan untuk tabel `pendataan_barang`
+--
+ALTER TABLE `pendataan_barang`
+  ADD CONSTRAINT `FK_MENGINPUTKAN` FOREIGN KEY (`ID_USER`) REFERENCES `user` (`ID_USER`),
+  ADD CONSTRAINT `FK_MENYIMPAN_NAMA` FOREIGN KEY (`ID_BARANG`) REFERENCES `barang` (`ID_BARANG`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
