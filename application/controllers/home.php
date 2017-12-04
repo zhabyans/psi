@@ -5,7 +5,9 @@ class home extends CI_Controller {
 	function __construct(){
 	parent::__construct();
 	$this->load->model('mdata_pengeluaran');
+	$this->load->model('m_data2');
 	$this->load->helper('url');
+	$this->mdata_pengeluaran->cek_retur();
 	}
 	public function index()
 	{
@@ -19,6 +21,7 @@ class home extends CI_Controller {
 		//$this->header();
 		$_GET['aksi']='Data Barang';
 		$data['barang']=$this->mdata_pengeluaran->nama_barang()->result();
+		$data['list']=$this->m_data2->tampil_data()->result();
 		$this->load->view('header_view');
 		$this->load->view('input', $data);
 		$this->load->view('footer_view');
