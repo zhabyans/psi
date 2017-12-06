@@ -39,7 +39,7 @@
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
+    <div class="sidebar" data-color="azure" data-image="<?php echo base_url()?>assets/img/sidebar-5.jpg">
 
     <!--
 
@@ -68,7 +68,7 @@
                         <p>Data Barang</p>
                     </a>
                 </li>
-                <li <?php if($_GET['aksi']=='penjualan') {?> class="active" <?php }?>>
+                <li <?php if($_GET['aksi']=='Data Penjualan') {?> class="active" <?php }?>>
                     <a href="<?php echo base_url()?>/index.php/home/data_penjualan">
                         <i class="pe-7s-cash"></i>
                         <p>Data Penjualan</p>
