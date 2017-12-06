@@ -11,4 +11,9 @@ function tampil_data(){
 
 //return $this->db->get('pendataan_barang');
 }
+function cari_data($id){
+	$query=$this->db->get_where('pendataan_barang', array('id_barang'=> $id,'tanggal_masuk'=>$this->input->post('tgl')));
+		return $query->row();
+
+}
 }
