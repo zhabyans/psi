@@ -27,8 +27,27 @@
 		);
 		return $this->db->insert('pendataan_barang', $data);
  	}
+	
+	function input_terjual($id, $id_trans, $id_user,$harga,$total,$id_pendataan){
+		$date=date('Y-m-d');
+		$data=array(
+					'id_pendataan'=>$id_pendataan,
+					'id_barang'=>$id,
+					'id_user'=>$id_user,
+					'id_transaksi'=>$id_trans,
+					'tanggal_terjual'=>$date,
+					'jumlah_terjual'=>$this->input->post('stok'),
+					'total_terjual'=>$total
+					);
+		return $this->db->insert('data_pengeluaran', $data);
+ 	}
+	
 	function cari_id(){
 		$query=$this->db->get_where('barang', array('nama_barang'=> $this->input->post('barang')));
+		return $query->row();
+ 	}
+	function cari_id_data($id){
+		$query=$this->db->get_where('pendataan_barang', array('id_barang'=> $id,'tanggal_masuk'=> $this->input->post('tgl')));
 		return $query->row();
  	}
  }
