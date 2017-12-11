@@ -78,7 +78,10 @@ class home extends CI_Controller {
 			echo $id_pendataan;
 			echo $this->input->post('tgl');
 			$harga=$row->HARGA;
+			$stok=$row1->STOK;
+			echo $stok;
 			$total=$this->input->post('stok')*$harga;
+			$barang_akhir=$stok-$this->input->post('stok');
 			$tgl=$this->input->post('tgl');
 			//buat id_pendataan
 			$q = $this->db->query("SELECT MAX(RIGHT(id_transaksi,3)) AS idmax FROM data_pengeluaran");
@@ -95,6 +98,7 @@ class home extends CI_Controller {
 			$id_trans=$kar.$kd;
 			//input id user
 			$id_user=$_SESSION['id'];
+			$this->mdata_pengeluaran->update_stok($id_pendataan,$barang_akhir);
 			$this->mdata_pengeluaran->input_terjual($id, $id_trans, $id_user,$harga,$total,$id_pendataan);
 			redirect('home/data_penjualan');
 		}
