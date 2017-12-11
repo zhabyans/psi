@@ -11,6 +11,12 @@ function tampil_data(){
 
 //return $this->db->get('pendataan_barang');
 }
+<<<<<<< HEAD
+function cari_data($id){
+	$query=$this->db->get_where('pendataan_barang', array('id_barang'=> $id,'tanggal_masuk'=>$this->input->post('tgl')));
+		return $query->row();
+
+=======
 
 function tampil_data_juga(){
 	$this->db->select('barang.*, user.*, pendataan_barang.*, data_pengeluaran.*');
@@ -22,5 +28,6 @@ function tampil_data_juga(){
 	return $this->db->get('pendataan_barang');
 
 //return $this->db->get('pendataan_barang');
+>>>>>>> 40285cb4226ff9fe0d43c7eef9617e7d21f21c1e
 }
 }
