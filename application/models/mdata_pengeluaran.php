@@ -40,7 +40,17 @@
 					'total_terjual'=>$total
 					);
 		return $this->db->insert('data_pengeluaran', $data);
+		
  	}
+	
+	function update_stok($id_pendataan,$barang_akhir){
+		$data2=array(
+					'stok'=>$barang_akhir
+		);
+		$this->db->where('id_pendataan',$id_pendataan);
+		return $this->db->update('pendataan_barang',$data2);
+		
+	}
 	
 	function cari_id(){
 		$query=$this->db->get_where('barang', array('nama_barang'=> $this->input->post('barang')));
