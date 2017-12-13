@@ -26,14 +26,23 @@ class home extends CI_Controller {
 		$this->load->view('input', $data);
 		$this->load->view('footer_view');
 	}
-	public function laporan()
+	public function laporan()//elma
 	{
 		//$this->header();
 		$_GET['aksi']='Laporan Penjualan';
-		$this->load->view('header_view');
+		$this->header();
 		if(isset($_POST['submit'])){
-			$data['product']=$this->mdata_pengeluaran->daftar_retur()->result();
-			$this->load->view('laporan',$data);
+			$hari=$_POST['hari'];
+			$bln=$_POST['bln'];
+			if($hari!=0){
+				$data['c_hari']=$this->mdata_pengeluaran->laporan_harian()->num_rows();
+				$data['laporan_harian']=$this->mdata_pengeluaran->laporan_harian()->result();
+				$this->load->view('laporan_harian',$data);
+			}elseif($bln!=0){
+				$data['c_bln']=$this->mdata_pengeluaran->laporan()->num_rows();
+				$data['laporan']=$this->mdata_pengeluaran->laporan()->result();
+				$this->load->view('laporan',$data);
+			}
 		}else{
 			$this->load->view('cari_laporan');
 		}
