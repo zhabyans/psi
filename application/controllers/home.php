@@ -124,7 +124,7 @@ class home extends CI_Controller {
 	public function data_penjualan(){
 		$_GET['aksi']='Data Penjualan';
 		$data['barang']=$this->mdata_pengeluaran->nama_barang()->result();
-		$data['list']=$this->m_data2->tampil_data()->result();
+	//	$data['list']=$this->m_data2->tampil_data()->result();
 		$data['data']=$this->m_data2->tampil_data_juga()->result();
 		$this->load->view('header_view');
 		$this->load->view('vdata_penjualan', $data);
