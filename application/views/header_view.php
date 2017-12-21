@@ -40,7 +40,14 @@
 
 <div class="wrapper">
 
+<<<<<<< HEAD
     <div class="sidebar" data-color="blue" data-image="assets/img/sidebar-5.jpg">
+=======
+    <div class="sidebar" data-color="blue" data-image="<?php echo base_url()?>assets/img/sidebar-5.jpg">
+
+ 
+
+>>>>>>> a4c85938aca907d14be12d5444a99fb52598a305
 
     <!--
 

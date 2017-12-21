@@ -26,14 +26,23 @@ class home extends CI_Controller {
 		$this->load->view('input', $data);
 		$this->load->view('footer_view');
 	}
-	public function laporan()
+	public function laporan()//elma
 	{
 		//$this->header();
 		$_GET['aksi']='Laporan Penjualan';
-		$this->load->view('header_view');
+		$this->header();
 		if(isset($_POST['submit'])){
-			$data['product']=$this->mdata_pengeluaran->daftar_retur()->result();
-			$this->load->view('laporan',$data);
+			$hari=$_POST['hari'];
+			$bln=$_POST['bln'];
+			if($hari!=0){
+				$data['c_hari']=$this->mdata_pengeluaran->laporan_harian()->num_rows();
+				$data['laporan_harian']=$this->mdata_pengeluaran->laporan_harian()->result();
+				$this->load->view('laporan_harian',$data);
+			}elseif($bln!=0){
+				$data['c_bln']=$this->mdata_pengeluaran->laporan()->num_rows();
+				$data['laporan']=$this->mdata_pengeluaran->laporan()->result();
+				$this->load->view('laporan',$data);
+			}
 		}else{
 			$this->load->view('cari_laporan');
 		}
@@ -86,7 +95,10 @@ class home extends CI_Controller {
 			echo $id_pendataan;
 			echo $this->input->post('tgl');
 			$harga=$row->HARGA;
+			$stok=$row1->STOK;
+			echo $stok;
 			$total=$this->input->post('stok')*$harga;
+			$barang_akhir=$stok-$this->input->post('stok');
 			$tgl=$this->input->post('tgl');
 			//buat id_pendataan
 			$q = $this->db->query("SELECT MAX(RIGHT(id_transaksi,3)) AS idmax FROM data_pengeluaran");
@@ -103,6 +115,7 @@ class home extends CI_Controller {
 			$id_trans=$kar.$kd;
 			//input id user
 			$id_user=$_SESSION['id'];
+			$this->mdata_pengeluaran->update_stok($id_pendataan,$barang_akhir);
 			$this->mdata_pengeluaran->input_terjual($id, $id_trans, $id_user,$harga,$total,$id_pendataan);
 			redirect('home/data_penjualan');
 		}
@@ -111,7 +124,7 @@ class home extends CI_Controller {
 	public function data_penjualan(){
 		$_GET['aksi']='Data Penjualan';
 		$data['barang']=$this->mdata_pengeluaran->nama_barang()->result();
-		$data['list']=$this->m_data2->tampil_data()->result();
+	//	$data['list']=$this->m_data2->tampil_data()->result();
 		$data['data']=$this->m_data2->tampil_data_juga()->result();
 		$this->load->view('header_view');
 		$this->load->view('vdata_penjualan', $data);

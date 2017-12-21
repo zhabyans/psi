@@ -13,7 +13,6 @@
 						<h4 class="title">Laporan Bulanan Outlet SIP</h4><br>
 						<p class="category">cari laporan berdasarkan bulan/harian</p>
 					</div>
-					
 					<div class="col-md-4">
 						<form action="<?php echo base_url() ?>/index.php/home/laporan" method="post">
 							<div class="col-md-12">
@@ -49,54 +48,14 @@
 					<div class="col-md-12">
 					</div>
 					<div class="content">
-					<br><br>
-					<form>
-						<button class="btn btn-info btn-fill pull-right"><i class="pe-7s-print"></i></button>
-						<input name="cetak" type="hidden" id="cetak" value="<?php echo $_POST['bln']?>">
-					</form>
-					<br><br>
-						<center><h4>Laporan Penjualan Bulan
-					<?php $bln=$_POST['bln'];
-						switch($bln){
-							case $bln==1:
-								echo "Januari";
-								break;
-							case $bln==2:
-								echo "Februari";
-								break;
-							case $bln==3:
-								echo "Maret";
-								break;
-							case $bln==4:
-								echo "April";
-								break;
-							case $bln==5:
-								echo "Mei";
-								break;
-							case $bln==6:
-								echo "Juni";
-								break;
-							case $bln==7:
-								echo "Juli";
-								break;
-							case $bln==8:
-								echo "Agustus";
-								break;
-							case $bln==9:
-								echo "September";
-								break;
-							case $bln==10:
-								echo "Oktober";
-								break;
-							case $bln==11:
-								echo "November";
-								break;
-							case $bln==12:
-								echo "Desember";
-								break;
-						}?></h4>
-						</center>
-						<?php if($c_bln>0){?>
+						<br><br>
+						<form>
+							<button class="btn btn-info btn-fill pull-right"><i class="pe-7s-print"></i></button>
+							<input name="cetak" type="hidden" id="cetak" value="<?php echo $_POST['bln']?>">
+						</form>
+						<br><br>
+						<center><h4>Laporan Penjualan tanggal <?php echo $_POST['hari']?></h4></center>
+						<?php if($c_hari>0){?>
 						<div class="table-responsive">
 							<table class="table table-hover table-striped">
 								<thead>
@@ -108,7 +67,7 @@
 									<th>TOTAL HARGA TERJUAL</th>
 								</thead>
 								<tbody>
-									<?php foreach ($laporan as $lp){?>
+									<?php foreach ($laporan_harian as $lp){?>
 									<tr>
 										<td><?php echo $lp->ID_TRANSAKSI?></td>
 										<td><?php echo $lp->TANGGAL_TERJUAL?></td>

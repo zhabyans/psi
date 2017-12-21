@@ -57,20 +57,21 @@
 										<thead>								
 											<th>Id</th>
 											<th>Nama Barang</th>
-											<th>User</th>
-											<th>Tanggal Masuk</th>
-											<th>Stok</th>
-											<th>Status</th>
+											<th>Tanggal Terjual</th>
+											<th>Harga</th>
+											<th>Jumlah Terjual</th>
+											<th>Total Terjual</th>
 										</thead>
 										<tbody>
-											<?php foreach($list as $pb){ ?>
+											<?php foreach($data as $pb){ ?>
 											<tr>
-													<td><?php echo $pb->ID_PENDATAAN ?></td>
-													<td><?php echo $pb->NAMA_BARANG ?></td>
-													<td><?php echo $pb->USER ?></td>
-													<td><?php echo $pb->TANGGAL_MASUK ?></td>
-													<td><?php echo $pb->STOK ?></td>
-													<td><?php echo $pb->STATUS_RETUR ?></td>
+													<td><?php echo $pb->ID_TRANSAKSI ?></td>
+													<td><?php echo $pb->NAMA_BARANG ?></td>						
+													<td><?php echo $pb->TANGGAL_TERJUAL ?></td>
+													<td><?php echo $pb->HARGA ?></td>
+													<td><?php echo $pb->JUMLAH_TERJUAL?> BIJI PALE LU</td>
+													<td><?php echo $pb->TOTAL_TERJUAL?></td>
+													
 											</tr>
 											<?php } ?>
 										</tbody>

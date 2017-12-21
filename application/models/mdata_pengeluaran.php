@@ -7,14 +7,36 @@
 		$this->db->where('pendataan_barang.STATUS_RETUR', 'retur');
 		return $this->db->get();
  	}
-	function laporan(){
+	function cari_laporan(){//elma
 	 	$this->db->select('barang.*, data_pengeluaran.*');
 		$this->db->from('data_pengeluaran');
 		$this->db->join('barang','data_pengeluaran.ID_BARANG = barang.ID_BARANG');
-		$this->db->where('data_pengeluaran.TANGGAL_TERJUAL', '');
+		//$this->db->where('data_pengeluaran.TANGGAL_TERJUAL', $this->input->post('bln'));
+		$this->db->like('data_pengeluaran.TANGGAL_TERJUAL', '-'.$this->input->post('bln').'-');
 		return $this->db->get();
  	}
-	function nama_barang(){
+	function laporan_harian(){//elma
+		$this->db->select('barang.*, data_pengeluaran.*');
+	 	$this->db->select('SUM(data_pengeluaran.jumlah_terjual) AS jlh');
+	 	$this->db->select('SUM(data_pengeluaran.total_terjual) AS ttl');
+		$this->db->from('data_pengeluaran');
+		$this->db->join('barang','data_pengeluaran.ID_BARANG = barang.ID_BARANG');
+		$this->db->where('data_pengeluaran.TANGGAL_TERJUAL', $this->input->post('hari'));
+		$this->db->group_by('barang.nama_barang');
+		return $this->db->get();
+ 	}
+	function laporan(){//elma
+	 	$this->db->select('barang.*, data_pengeluaran.*');
+	 	$this->db->select('SUM(data_pengeluaran.jumlah_terjual) AS jlh');
+	 	$this->db->select('SUM(data_pengeluaran.total_terjual) AS ttl');
+		$this->db->from('data_pengeluaran');
+		$this->db->join('barang','data_pengeluaran.ID_BARANG = barang.ID_BARANG');
+		//$this->db->where('data_pengeluaran.TANGGAL_TERJUAL', $this->input->post('bln'));
+		$this->db->like('data_pengeluaran.TANGGAL_TERJUAL', '-'.$this->input->post('bln').'-');
+		$this->db->group_by('barang.nama_barang');
+		return $this->db->get();
+ 	}
+		function nama_barang(){
 		return $this->db->get('barang');
  	}
 	function input_barang($id, $id_data, $id_user){
@@ -40,7 +62,17 @@
 					'total_terjual'=>$total
 					);
 		return $this->db->insert('data_pengeluaran', $data);
+		
  	}
+	
+	function update_stok($id_pendataan,$barang_akhir){
+		$data2=array(
+					'stok'=>$barang_akhir
+		);
+		$this->db->where('id_pendataan',$id_pendataan);
+		return $this->db->update('pendataan_barang',$data2);
+		
+	}
 	
 	function cari_id(){
 		$query=$this->db->get_where('barang', array('nama_barang'=> $this->input->post('barang')));
