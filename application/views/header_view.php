@@ -39,11 +39,8 @@
 <body>
 
 <div class="wrapper">
-<<<<<<< HEAD
+
     <div class="sidebar" data-color="blue" data-image="assets/img/sidebar-5.jpg">
-=======
-    <div class="sidebar" data-color="azure" data-image="<?php echo base_url()?>assets/img/sidebar-5.jpg">
->>>>>>> 40285cb4226ff9fe0d43c7eef9617e7d21f21c1e
 
     <!--
 

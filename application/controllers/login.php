@@ -21,7 +21,7 @@
 					}else{*/
 					$this->session->set_userdata('id',$id);
 					$this->session->set_userdata('user',$user);
-					redirect('home/daftar_retur');
+					redirect('home');
 					//}
 				}else{
 					$this->session->set_flashdata("pesan", " <i class='fa fa-warning'></i>&nbspPeriksa kembali email dan passwordmu");
