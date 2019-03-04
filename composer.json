@@ -7,11 +7,11 @@
 	"support": {
 		"forum": "http://forum.codeigniter.com/",
 		"wiki": "https://github.com/bcit-ci/CodeIgniter/wiki",
-		"slack": "https://codeigniterchat.slack.com",
+		"irc": "irc://irc.freenode.net/codeigniter",
 		"source": "https://github.com/bcit-ci/CodeIgniter"
 	},
 	"require": {
-		"php": ">=5.3.7"
+		"php": ">=5.2.4"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"

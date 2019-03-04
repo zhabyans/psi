@@ -1,12 +1,13 @@
-<?php if(isset($_SESSION['user'])==1){
-	redirect('home/daftar_retur');
+<?php if(isset($_SESSION['user'])!=0){
+	$this->session->set_flashdata("pesan", " <i class='fa fa-warning'></i>&nbspAnda harus login");
+	redirect('home');
 }
 ?>
 <!doctype html>
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
+	<link rel="icon" type="image/png" href="assets/img/favicon.jpg">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 	<title>Login Outlet</title>
@@ -33,24 +34,24 @@
 <br>
 <br>
 <br>
+<br>
 <center>
 <div class="col-md-4">
 </div>
 <div class="col-md-4">
 	<div class="card card-user">
-		<div class="image">
-			<img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
-		</div>
+		
 		<div class="content">
-		<?php echo "<br>".$this->session->flashdata("pesan");?>
+		<br>
+		<?php //echo "<br>".$this->session->flashdata("pesan");?>
 		<form action="<?php echo base_url() ?>/index.php/login/pro_login" method="post">
 				<div class="form-group">
 					<label>Masukkan Username</label>
-					<input type="text" class="form-control" placeholder="Username" name="user">
+					<input type="text" class="form-control" placeholder="Username" name="user" required autofocus>
 				</div>
 				<div class="form-group">
 					<label>Masukkan Password</label>
-					<input type="password" class="form-control"  placeholder="Password" name="pass">
+					<input type="password" class="form-control"  placeholder="Password" name="pass" required>
 				</div>
 				<button type="submit" class="btn btn-info btn-fill">Masuk</button>
 		</form>
@@ -58,15 +59,6 @@
 		<hr>
 		<div class="text-center">
 			<br>
-			<p class="description text-center"> 
-				Copyright &copy by Outlet Polije
-			</p>
-			<br>
-		</div>
-	</div>
-</div>
-</center>
-</body>
 
 <!--   Core JS Files   -->
     <script src="<?php echo base_url()?>/assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
@@ -86,13 +78,13 @@
 	<script type="text/javascript">
     	$(document).ready(function(){
 
-		<?php if($this->session->flashdata("pesan")==1){?>
+		<?php if($this->session->flashdata("pesan")==true){?>
         	$.notify({
             	icon: 'pe-7s-gift',
-            	message: "Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer."
+            	message: "<?php echo $this->session->flashdata("pesan")?>"
 
             },{
-                type: 'info',
+                type: 'danger',
                 timer: 4000
             });
 		<?php }?>
